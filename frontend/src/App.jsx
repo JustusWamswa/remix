@@ -8,6 +8,8 @@ import eventDetail from "./pages/eventDetail"
 import opportunity from "./pages/opportunity"
 import pageNotFound from "./pages/pageNotFound"
 import about from "./pages/about"
+import signUp from "./pages/signUp"
+import login from "./pages/login"
 
 function App() {
 
@@ -19,7 +21,9 @@ function App() {
           <Route path="/about" Component={about} />
           <Route path="/event" Component={event} />
           <Route path="/event/:id" Component={eventDetail} />
-          <Route path="opportunity" Component={opportunity} />
+          <Route path="/opportunity" Component={opportunity} />
+          <Route path="/signup" Component={signUp} />
+          <Route path="/login" Component={login} />
           <Route path="*" Component={pageNotFound} />
         </Routes>
       </Layout>

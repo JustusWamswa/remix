@@ -4,7 +4,7 @@ import UpdateUserModal from './modals/UpdateUserModal'
 import UpdateAdminModal from './modals/UpdateAdminModal'
 
 const apiUrl = import.meta.env.VITE_API_URL
-console.log("url: ", apiUrl)
+
 function User() {
 
     const [userData, setUserData] = useState(null)

@@ -8,11 +8,14 @@ function UpcomingEvents() {
                 <h1 className='font-semibold'>FIRESIDE CHAT AT MOLINEAUX</h1>
                 <h2 className='pb-5 pt-1 font-light text-sm'>Networking</h2>
                 <div className="w-full h-2/5 bg-[url('/people.jpg')] bg-cover bg-center bg-no-repeat"></div>
-                <p className='py-6 line-clamp-3'>
-                Join us for an intimate fireside chat event, where industry leaders will engage in candid 
-                conversations about their journeys, insights, and the lessons learned along the way. 
-                This exclusive gathering offers a unique opportunity ...
-                </p>
+                <div className='py-6'>
+                    <p className='line-clamp-3'>
+                        Join us for an intimate fireside chat event, where industry leaders will engage in candid
+                        conversations about their journeys, insights, and the lessons learned along the way.
+                        This exclusive gathering offers a unique opportunity fireside chat event, where industry leaders will engage in candid
+                        fireside chat event, where industry leaders will engage in candid...
+                    </p>
+                </div>
                 <div className='flex items-center mt-6'>
                     <div className="bg-[url('/location.png')] w-8 h-5 bg-center bg-contain bg-no-repeat mr-8"></div>
                     <h1 className='text-primary font-bold text-sm'>Molineaux</h1>
