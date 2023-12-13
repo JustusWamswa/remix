@@ -24,8 +24,6 @@ function signUp() {
     const [validateUserExist, setValidateUserExist] = useState(false)
     const {user, setUser} = useUsersStore()
 
-    const created_at = new Date().toDateString()
-
     const handleSubmit = (e) => {
         e.preventDefault()
         // validate form input
@@ -45,10 +43,10 @@ function signUp() {
             // create new user
             createUser(newUserData)
                 .then((response) => {
-                    console.log("Response: ", response)
                     setValidateUserExist(false)
                     if(response.status == 200) {
-                        localStorage.setItem('user', JSON.stringify({response}))
+                        setUser({...response})
+                        localStorage.setItem('user', JSON.stringify({...response}))
                         setTimeout(() => {
                             // reset form
                             setFirstName("")

@@ -23,3 +23,23 @@ export const loginUser = async (userData) => {
 
     return await response.json()
 }
+
+export const fetchEvents = async (token) => {
+    const response = await fetch(`${apiUrl}/event/getEvents`, {
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        }
+    })
+    return await response.json()
+}
+
+// import { useUsersStore } from "../stores/useUsersStore"
+// const { user, setUser} = useUsersStore()
+// export const logoutUser = () => {
+//     // delete user from localStorage
+//     localStorage.removeItem('user')
+//     // update global state
+//     setUser('')
+
+//     return
+// }

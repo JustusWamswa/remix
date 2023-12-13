@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Layout from "./components/Layout"
 import home from "./pages/home"
@@ -10,8 +10,17 @@ import pageNotFound from "./pages/pageNotFound"
 import about from "./pages/about"
 import signUp from "./pages/signUp"
 import login from "./pages/login"
+import { useUsersStore } from "./stores/useUsersStore"
 
 function App() {
+  
+  const {user, setUser} = useUsersStore()
+  const localItem = JSON.parse(localStorage.getItem('user'))
+  useEffect(() => {
+    if (localItem) {
+      setUser(localItem)
+    }
+  }, [])
 
   return (
     <BrowserRouter>

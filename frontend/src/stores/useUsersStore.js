@@ -1,7 +1,8 @@
 import { create } from 'zustand'
 
 export const useUsersStore = create((set) => ({
-    user: '',
-    setUser: (newUser) => set({user: newUser})
+    user: {},
+    setUser: (newUser) => set({user: newUser}),
+    loginError: 'Login or sign up to access'
 }))
 

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import NewEventModal from './modals/NewEventModal'
 import UpdateEventModal from './modals/UpdateEventModal'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { fetchEvents } from '../services/api'
+import { useUsersStore } from '../stores/useUsersStore'
 
 const apiUrl = import.meta.env.VITE_API_URL
 
@@ -20,23 +22,34 @@ function Event() {
     const [updatedEventData, setUpdatedEventData] = useState({
         title: '', description: '', category: '', location: '', eventDate: '', startTime: '', endTime: ''
     });
+    const { user, setUser, loginError } = useUsersStore()
 
-    const fetchEvents = async () => {
-        try {
-            const response = await fetch(`${apiUrl}/event/getEvents`)
-            const data = await response.json()
-            setEventData(data)
-            console.log(data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    // const fetchEvents = async () => {
+    //     try {
+    //         const response = await fetch(`${apiUrl}/event/getEvents`)
+    //         const data = await response.json()
+    //         setEventData(data)
+    //         console.log(data)
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
     useEffect(() => {
 
-        fetchEvents()
-
-    }, [change])
+        if (!user.token) {
+            console.log(loginError)
+            return
+        }
+        
+        fetchEvents(user.token)
+            .then((response) => {
+                setEventData(response)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }, [change, user])
 
     const handleDelete = async (id) => {
         try {
