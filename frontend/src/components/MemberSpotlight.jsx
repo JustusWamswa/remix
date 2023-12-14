@@ -3,7 +3,7 @@ import '../index.css'
 
 function MemberSpotlight() {
     return (
-        <div className='flex h-screen'>
+        <div id='section3' className='flex h-screen'>
             <div className='w-1/2 pt-32 text-center'>
                 <div className='font-extrabold text-7xl'>
                     <h1>Member</h1>
@@ -17,15 +17,15 @@ function MemberSpotlight() {
 
             <div className='w-1/2 h-[80vh] relative flex flex-col'>
                 <div className='flex justify-between'>
-                    <div className="hexagon bg-[url('/member3.jpg')] bg-center bg-cover bg-no-repeat h-72 w-72">
-
+                    <div className="hexagon h-72 w-72 overflow-hidden">
+                        <div className="hexagon bg-[url('/member3.jpg')] bg-center bg-cover bg-no-repeat h-full w-full hover:scale-105 ease-in-out transition-all duration-200"></div>
                     </div>
-                    <div className="hexagon bg-[url('/member2.jpg')] bg-center bg-cover bg-no-repeat h-72 w-72">
-
+                    <div className="hexagon h-72 w-72 overflow-hidden">
+                        <div className="hexagon bg-[url('/member2.jpg')] bg-center bg-cover bg-no-repeat h-full w-full hover:scale-105 ease-in-out transition-all duration-200"></div>
                     </div>
                 </div>
-                <div className="hexagon bg-[url('/member1.jpg')] bg-center bg-cover bg-no-repeat h-72 w-72 mx-auto -mt-10">
-
+                <div className="hexagon h-72 w-72 overflow-hidden mx-auto -mt-10">
+                    <div className="hexagon bg-[url('/member1.jpg')] bg-center bg-cover bg-no-repeat h-full w-full hover:scale-105 ease-in-out transition-all duration-200"></div>
                 </div>
             </div>
         </div>

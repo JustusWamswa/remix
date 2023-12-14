@@ -2,7 +2,7 @@ import React from 'react'
 
 function Hero() {
     return (
-        <div className='flex h-screen'>
+        <div id='section1' className='flex h-screen'>
             <div className='w-1/2 pt-32 text-center'>
                 <div className='font-extrabold text-7xl'>
                     <h1>Collaborate</h1>
