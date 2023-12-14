@@ -33,6 +33,18 @@ export const fetchEvents = async (token) => {
     return await response.json()
 }
 
+export const sendMessage = async (newMessageData) => {
+    const response = await fetch(`${apiUrl}/message/createMessage`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newMessageData),
+    })
+
+    return await response.json()
+}
+
 // import { useUsersStore } from "../stores/useUsersStore"
 // const { user, setUser} = useUsersStore()
 // export const logoutUser = () => {

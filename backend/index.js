@@ -5,6 +5,7 @@ const cors = require('cors')
 const userRoutes = require('./routes/userRoutes')
 const eventRoutes = require('./routes/eventRoutes')
 const opportunityRoutes = require('./routes/opportunityRoutes')
+const messageRoutes = require('./routes/messageRoutes')
 
 const app = express()
 const port = process.env.PORT || 5000
@@ -20,6 +21,7 @@ app.use(express.json())
 app.use('/api/user', userRoutes)
 app.use('/api/event', eventRoutes)
 app.use('/api/opportunity', opportunityRoutes)
+app.use('/api/message', messageRoutes)
 
 // connect to mongodb
 mongoose.connect(dbUri)
