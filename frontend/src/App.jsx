@@ -10,6 +10,8 @@ import pageNotFound from "./pages/pageNotFound"
 import about from "./pages/about"
 import signUp from "./pages/signUp"
 import login from "./pages/login"
+import alreadyLoggedIn from "./pages/alreadyLoggedIn"
+import profile from "./pages/profile"
 import { useUsersStore } from "./stores/useUsersStore"
 
 function App() {
@@ -31,8 +33,9 @@ function App() {
           <Route path="/event" Component={event} />
           <Route path="/event/:id" Component={eventDetail} />
           <Route path="/opportunity" Component={opportunity} />
-          <Route path="/signup" Component={signUp} />
-          <Route path="/login" Component={login} />
+          <Route path="/signup" Component={!user.email ? signUp : alreadyLoggedIn} />
+          <Route path="/login" Component={!user.email ? login : alreadyLoggedIn} />
+          <Route path="/profile" Component={user.email ? profile : pageNotFound} />
           <Route path="*" Component={pageNotFound} />
         </Routes>
       </Layout>

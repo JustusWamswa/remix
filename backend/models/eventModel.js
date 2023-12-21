@@ -34,6 +34,12 @@ const eventSchema = new Schema({
     endTime: {
         type: String,
         required: true
+    },
+    thumbnail: {
+        type: String,
+    },
+    attendees:{ 
+        type: [String]
     }
 }, { timestamps: true })
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { categories } from './NewEventModal'
+import { categories } from '../../cache/categories'
 
 const apiUrl = import.meta.env.VITE_API_URL
 

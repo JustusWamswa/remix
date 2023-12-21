@@ -6,15 +6,16 @@ import Testimonials from '../components/Testimonials'
 import Quote from '../components/Quote'
 import ScrollSpy from '../components/ScrollSpy'
 
-function home() { 
+function home() {
+
   return (
     <>
-      <Hero />
-      <UpcomingEvents />
-      <MemberSpotlight />
-      <Testimonials />
-      <Quote />
-      <ScrollSpy />
+        <Hero />
+        <UpcomingEvents />
+        <MemberSpotlight />
+        <Testimonials />
+        <Quote />
+        <ScrollSpy />
     </>
   )
 }

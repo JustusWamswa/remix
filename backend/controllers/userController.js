@@ -17,18 +17,22 @@ const createUser = async (req, res) => {
     // if ( !email || !password) {
     //     throw Error('All required fields must be filled')
     // }
-    // if(!validator.isEmail(email)) {
-    //     throw Error('Email is not valid')
-    // }
-    // if(!validator.isStrongPassword(password)) {
-    //     throw Error('Password requirements: minimum of 8 characters, uppercase letter, lowercase letter, number, symbol')
-    // }
+    if(!validator.isEmail(email)) {
+        console.log("Invalid email")
+        res.status(400).json({error: 'Email is not valid'})
+        return
+    }
+    if(!validator.isStrongPassword(password)) {
+        console.log("Invalid password")
+        res.status(400).json({error: "Password requirements: minimum of 8 characters, uppercase letter, lowercase letter, number, symbol"})
+        return
+    }
 
     // check if a user with the provided email already exists
     const existingUser = await User.findOne({ email })
     if (existingUser) {
         console.log("Error: The email provided has already been taken")
-        res.status(400).json({ error: "The email provided has already been taken", status: 400 })
+        res.status(400).json({ error: "The email provided his already in use.", status: 400 })
         return
     }
     // Hash the user's password
@@ -38,13 +42,17 @@ const createUser = async (req, res) => {
             return res.status(500).json(err);
         }
 
-        // Create a new user with hashed password
+        // Create a new user with hashed password 
         try {
             const user = await User.create({ ...req.body, password: hash })
             //create a jwt
             const token = createToken(user._id)
             // res.status(200).json(user)
-            res.status(200).json({ message: "User has been created successfully", token: token, status: 200, email: email })
+            res.status(200).json({
+                message: "User has been created successfully", token: token,
+                status: 200, email: email, profilePicture: user.profilePicture, admin: user.admin,
+                firstName: user.firstName, lastName: user.lastName, id: user._id
+            })
         } catch (error) {
             console.log(error)
             res.status(500).json(error)
@@ -68,14 +76,17 @@ const getUsers = async (req, res) => {
 
 // read single user information
 const getUser = async (req, res) => {
-    const { id } = req.params
+    const { id } = req.body
     if (!id) {
         console.log("Error: Provide user's id")
         return res.status(400).json({ error: "Provide user's id" })
     }
     try {
         const user = await User.findById(id)
-        res.status(200).json(user)
+        res.status(200).json({
+            email: user.email, status: 200, profilePicture: user.profilePicture, graduationYear: user.graduationYear,
+            admin: user.admin, firstName: user.firstName, lastName: user.lastName, id: user._id, phone: user.phone
+        })
 
     } catch (error) {
         console.log(error)
@@ -98,25 +109,28 @@ const loginUser = async (req, res) => {
         return
     }
     try {
-        const user = await User.findOne({email})
+        const user = await User.findOne({ email })
         if (!user) {
             console.log('Email is incorrect')
-            res.status(400).json({error: 'Email is incorrect'})
+            res.status(400).json({ error: 'Email is incorrect' })
             return
         }
 
         const matchPassword = await bcrypt.compare(password, user.password)
 
-        if(!matchPassword) {
+        if (!matchPassword) {
             console.log('Password is incorrect')
-            res.status(400).json({error: 'Password is incorrect'})
+            res.status(400).json({ error: 'Password is incorrect' })
             return
         }
 
         //create a jwt
         const token = createToken(user._id)
 
-        res.status(200).json({email, token, status: 200})
+        res.status(200).json({
+            email, token, status: 200, profilePicture: user.profilePicture,
+            admin: user.admin, firstName: user.firstName, lastName: user.lastName, id: user._id
+        })
 
     } catch (error) {
         console.log(error)
@@ -127,14 +141,15 @@ const loginUser = async (req, res) => {
 
 // update user information
 const updateUser = async (req, res) => {
-    const { id, password } = req.body
+    const { id } = req.body
+
     if (!id) {
         console.log("Error: Provide user's id")
         return res.status(400).json({ error: "Provide user's id" })
     }
 
     // Hash the user's password if it is being updated
-    if (password) {
+    if (req.body.password) {
         bcrypt.hash(password, saltRounds, async (err, hash) => {
             if (err) {
                 console.error('Password hashing error:', err);
@@ -151,14 +166,18 @@ const updateUser = async (req, res) => {
                 res.status(500).json(error)
             }
 
-        });
-
+        })
         return
     }
 
     try {
-        const user = await User.findByIdAndUpdate(id, req.body, { new: true })
-        res.status(200).json(user)
+        const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true })
+        console.log(updatedUser)  
+        res.status(200).json({
+            email: updatedUser.email, status: 200, profilePicture: updatedUser.profilePicture, graduationYear: updatedUser.graduationYear,
+            admin: updatedUser.admin, firstName: updatedUser.firstName, lastName: updatedUser.lastName, id: updatedUser._id, phone: updatedUser.phone
+        })
+        return
 
     } catch (error) {
         console.log(error)

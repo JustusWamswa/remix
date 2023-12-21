@@ -45,7 +45,7 @@ const ScrollSpy = () => {
 
 
     return (
-        <div className="scroll-spy">
+        <div className="scroll-spy hidden md:block">
             {allSections.map((section) => (
                 <ul>
                     <li className={activeSection === section.id ? 'active' : 'bg-white w-4 h-4 rounded-full'}></li>

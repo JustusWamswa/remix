@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { loginUser } from '../services/api'
 import { useUsersStore } from '../stores/useUsersStore'
+import { useNavigate } from 'react-router-dom'
 
 function login() {
 
@@ -11,7 +12,9 @@ function login() {
     const [validateEmail, setValidateEmail] = useState(false)
     const [validatePassword, setValidatePassword] = useState(false)
     const [serverErrorResponse, setServerErrorResponse] = useState('')
+    const [showPassword, setShowPassword] = useState(false)
     const { user, setUser } = useUsersStore()
+    const navigate = useNavigate()
 
 
     const handleSubmit = (e) => {
@@ -28,7 +31,8 @@ function login() {
             loginUser(userData)
                 .then((response) => {
                     if (response.status == 200) {
-                        setUser({...response})
+                        // console.log(response)
+                        setUser({ ...response })
                         localStorage.setItem('user', JSON.stringify({ ...response }))
                         setTimeout(() => {
                             // reset form
@@ -36,6 +40,7 @@ function login() {
                             setPassword("")
                         }, 1000)
                         setServerErrorResponse('')
+                        navigate(-1)
                     } else {
                         setServerErrorResponse(response.error)
                     }
@@ -58,8 +63,17 @@ function login() {
                         {validateEmail ? <p className="text-red-500 text-xs">Email is required</p> : null}
                     </div>
                     <div className="relative z-0 w-full mb-6 group">
-                        <input value={password} onChange={e => setPassword(e.target.value)} cols="30" rows="4" name="password" id="password" className="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 focus:outline-none focus:border-primary peer" placeholder=" " required type='password' />
+                        <input value={password} onChange={e => setPassword(e.target.value)} cols="30" rows="4" name="password" id="password" className="block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 focus:outline-none focus:border-primary peer" placeholder=" " required type={!showPassword ? 'password' : 'text'} />
                         <label htmlFor="password" className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter your password *</label>
+                        {!showPassword ? <div
+                            className="absolute duration-300 transform  top-1 right-0 z-10 origin-[0] bg-[url('/show.png')] w-5 h-5 bg-center bg-contain bg-no-repeat hover:cursor-pointer"
+                            onClick={() => setShowPassword(true)}
+                        ></div>
+                            :
+                            <div
+                                className="absolute duration-300 transform  top-1 right-0 z-10 origin-[0] bg-[url('/hide.png')] w-5 h-5 bg-center bg-contain bg-no-repeat hover:cursor-pointer"
+                                onClick={() => setShowPassword(false)}
+                            ></div>}
                         {validatePassword ? <p className="text-red-500 text-xs">Password is required</p> : null}
                     </div>
                     <div className="w-full">

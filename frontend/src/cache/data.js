@@ -7,7 +7,7 @@ export const eventData = [
         date: "31 October 2023, 1100 - 1500 hrs",
         name: "Mary Jane, '15",
         organizer: "Organizer",
-        picture: "/people.jpg"
+        picture: "/people.webp"
     },
     {
         title: "TECH INNOVATION FORUM",
@@ -17,7 +17,7 @@ export const eventData = [
         date: "15 November 2023, 0900 - 1700 hrs",
         name: "John Smith, '20",
         organizer: "Organizer",
-        picture: "/people1.jpg"
+        picture: "/people1.webp"
     },
     {
         title: "CREATIVE MINDS UNLEASHED",
@@ -27,7 +27,7 @@ export const eventData = [
         date: "7 December 2023, 1400 - 1800 hrs",
         name: "Emma Taylor, '18",
         organizer: "Organizer",
-        picture: "/people2.jpg"
+        picture: "/people2.webp"
     },
     {
         title: "BUSINESS STRATEGY SUMMIT",
@@ -37,7 +37,7 @@ export const eventData = [
         date: "22 January 2024, 1000 - 1600 hrs",
         name: "Robert Johnson, '22",
         organizer: "Organizer",
-        picture: "/people3.jpg"
+        picture: "/people3.webp"
     },
     {
         title: "SUSTAINABILITY SYMPOSIUM",
@@ -47,7 +47,7 @@ export const eventData = [
         date: "5 February 2024, 1200 - 1800 hrs",
         name: "Laura Green, '19",
         organizer: "Organizer",
-        picture: "/people4.jpg"
+        picture: "/people4.webp"
     },
     {
         title: "HEALTH AND WELLNESS RETREAT",
@@ -57,6 +57,6 @@ export const eventData = [
         date: "10 March 2024, 0900 - 1600 hrs",
         name: "Michael Wells, '16",
         organizer: "Organizer",
-        picture: "/people5.jpg"
+        picture: "/people5.webp"
     }
 ]

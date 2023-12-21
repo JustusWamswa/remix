@@ -24,11 +24,9 @@ export const loginUser = async (userData) => {
     return await response.json()
 }
 
-export const fetchEvents = async (token) => {
+export const fetchEvents = async () => {
     const response = await fetch(`${apiUrl}/event/getEvents`, {
-        headers: {
-            'Authorization': `Bearer ${token}`,
-        }
+    
     })
     return await response.json()
 }
@@ -45,13 +43,63 @@ export const sendMessage = async (newMessageData) => {
     return await response.json()
 }
 
-// import { useUsersStore } from "../stores/useUsersStore"
-// const { user, setUser} = useUsersStore()
-// export const logoutUser = () => {
-//     // delete user from localStorage
-//     localStorage.removeItem('user')
-//     // update global state
-//     setUser('')
+export const createEvent = async (newEventData, token) => {
+    const response = await fetch(`${apiUrl}/event/createEvent`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(newEventData),
+    })
+    return await response.json()
+}
 
-//     return
-// }
+export const updateUser = async (updatedUserData, token) => {
+    const response = await fetch(`${apiUrl}/user/updateUser`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(updatedUserData),
+    });
+
+    const data = await response.json()
+}
+
+export const addAttendee = async (attendeeData, token) => {
+    const response = await fetch(`${apiUrl}/event/addAttendee`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(attendeeData),
+    })
+    return await response.json()
+}
+
+export const removeAttendee = async (attendeeData, token) => {
+    const response = await fetch(`${apiUrl}/event/removeAttendee`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(attendeeData),
+    })
+    return await response.json()
+}
+
+export const getUser = async (id, token) => {
+    const response = await fetch(`${apiUrl}/user/getUser`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(id),
+    })
+    return await response.json()
+}
