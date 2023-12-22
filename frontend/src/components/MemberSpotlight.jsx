@@ -4,30 +4,30 @@ import { motion } from 'framer-motion'
 
 const fadeInAnimationVariants1 = {
     initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { type: 'spring', duration: 3, delay: 1 } },
+    animate: { opacity: 1, transition: { type: 'spring', duration: 2, delay: 0.5 } },
 }
 
 const slideInAnimationVariants1 = {
     initial: { x: '8vw', opacity: 0 },
-    animate: { x: 0, opacity: 1, transition: { type: 'spring', duration: 3, delay: 0.2 } },
+    animate: { x: 0, opacity: 1, transition: { type: 'spring', duration: 2, delay: 0.2 } },
 }
 
 const slideInAnimationVariants2 = {
     initial: { x: '8vw', opacity: 0 },
-    animate: { x: 0, opacity: 1, transition: { type: 'spring', duration: 3, delay: 1 } },
+    animate: { x: 0, opacity: 1, transition: { type: 'spring', duration: 2, delay: 0.5 } },
 }
 
 const scaleInAnimationVariants1 = {
     initial: { scale: 0.5, opacity: 0 },
-    animate: { scale: 1, opacity: 1, transition: { type: 'spring', duration: 3, delay: 0.2 } },
+    animate: { scale: 1, opacity: 1, transition: { type: 'spring', duration: 2, delay: 0.2 } },
 }
 const scaleInAnimationVariants2 = {
     initial: { scale: 0.5, opacity: 0 },
-    animate: { scale: 1, opacity: 1, transition: { type: 'spring', duration: 3, delay: 0.5 } },
+    animate: { scale: 1, opacity: 1, transition: { type: 'spring', duration: 2, delay: 0.5 } },
 }
 const scaleInAnimationVariants3 = {
     initial: { scale: 0.5, opacity: 0 },
-    animate: { scale: 1, opacity: 1, transition: { type: 'spring', duration: 3, delay: 0.8 } },
+    animate: { scale: 1, opacity: 1, transition: { type: 'spring', duration: 2, delay: 0.8 } },
 }
 
 function MemberSpotlight() {

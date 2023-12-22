@@ -1,7 +1,16 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { sendMessage } from '../services/api'
+import { motion } from 'framer-motion'
 
+const fadeInAnimationVariants1 = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { type: 'spring', duration: 3, delay: 1 } },
+}
+const slideInAnimationVariants1 = {
+    initial: { x: '-8vw', opacity: 0 },
+    animate: { x: 0, opacity: 1, transition: { type: 'spring', duration: 3, delay: 0.2 } },
+}
 
 function FAQ() {
 
@@ -58,20 +67,36 @@ function FAQ() {
     }
 
     return (
-        <div className='flex h-screen pt-20 mb-20 mt-12'>
-            <div className='w-1/2 h-[80vh] pl-5'>
+        <div id='sectionAbout5' className='flex flex-col-reverse md:flex md:flex-row md:h-screen pt-20 mb-20 mt-12'>
+            <motion.div
+                variants={fadeInAnimationVariants1}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                className='md:w-1/2 md:h-[80vh] md:px-5'>
                 <div className="">
-                    <h1 className='text-secondary text-lg font-medium pl-5 pb-5'>Q & A</h1>
-                    <ul className='m-0 pl-10 list-disc'>
-                        <li>Eligibility criteria - must have graduated from Remix College </li>
-                        <li>Annual membership fee - 12 USD</li>
-                        <li>Register using the ‘Join’ or ‘Register’ buttons provided</li>
-                        <li>Membership approved upon confirmation of details  </li>
-                        <li>Enjoy the benefits of being a member of Remix</li>
+                    <h1 className='text-secondary text-lg font-medium pt-8 md:pt-0 md:pl-5 pb-2 md:pb-5'>Q & A</h1>
+                    <ul className='m-0 pl-5 md:pl-10 list-disc'>
+                        <li>
+                            <p className='font-medium'>
+                                Q: How can I update my contact information?
+                            </p>
+                            A: You can easily update your contact information
+                            by logging into your alumni account on our website.
+                            Alternatively, reach out to our alumni relations team for assistance.
+                        </li>
+                        <li>
+                            <p className='font-medium'>
+                                Q: How can I get involved as a mentor or contribute to the community?
+                            </p>
+                            A: We encourage alumni to get involved by becoming mentors, event organizers,
+                            or contributing content. Reach out to our alumni engagement team to explore
+                            opportunities that match your interests and expertise.
+                        </li>
                     </ul>
                 </div>
                 <div className="">
-                    <h1 className='text-secondary text-lg font-medium pl-5 py-5'>REACH OUT</h1>
+                    <h1 className='text-secondary text-lg font-medium pt-8 md:pt-5 md:pl-5 pb-2 md:pb-5'>REACH OUT</h1>
                     <form method="post" className="pt-1 px-5">
                         <div className="grid md:grid-cols-2 md:gap-6">
                             <div className="relative z-0 w-full mb-6 group">
@@ -107,7 +132,7 @@ function FAQ() {
                             {isLoading ?
                                 <button
                                     type="button"
-                                    className="text-white bg-gray-400 focus:outline-none w-full px-5 py-2.5 text-center"
+                                    className="rounded text-white bg-gray-400 focus:outline-none w-full px-5 py-2.5 text-center"
                                 >
                                     Sending...
                                 </button>
@@ -115,7 +140,7 @@ function FAQ() {
                                 <button
                                     type="submit"
                                     onClick={handleSubmit}
-                                    className="text-white bg-primary hover:bg-secondary focus:outline-none w-full px-5 py-2.5 text-center"
+                                    className="rounded text-white bg-primary hover:bg-secondary focus:outline-none w-full px-5 py-2.5 text-center"
                                 >
                                     Submit
                                 </button>
@@ -130,15 +155,25 @@ function FAQ() {
                     </form>
 
                 </div>
-            </div>
-            <div className='w-1/2 pt-52 text-center border-l-2 border-black'>
-                <div className='font-extrabold text-7xl'>
-                    <h1>FAQs</h1>
+            </motion.div>
+            <div className='md:w-1/2 md:pt-52 text-center md:border-l-2 border-black'>
+                <div className='font-extrabold text-4xl md:text-7xl'>
+                    <motion.h1
+                        variants={slideInAnimationVariants1}
+                        initial="initial"
+                        whileInView="animate"
+                        viewport={{ once: true }}
+                    >FAQs</motion.h1>
                 </div>
-                <p className='w-5/6 mx-auto text-center pt-8 leading-6 tracking-wide'>
+                <motion.p
+                    variants={fadeInAnimationVariants1}
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={{ once: true }}
+                    className='md:w-5/6 mx-auto text-left md:text-center pt-8 leading-6 tracking-wide'>
                     These are some of the frequently asked questions. Feel free to contact us at <span className='text-secondary underline'>remix@info.org</span> or fill in
                     the provided form for further queries. We will get back to you in no time. .
-                </p>
+                </motion.p>
             </div>
         </div>
     )

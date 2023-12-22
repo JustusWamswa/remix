@@ -10,7 +10,7 @@ function Alert(props) {
                 className="absolute inset-0 bg-black opacity-60"
                 onClick={() => setAlert(false)}
             ></div>
-            <div className="bg-white p-8 z-10 w-1/3 flex flex-col justify-center items-center">
+            <div className="bg-white p-8 z-10 w-1/3 flex flex-col justify-center items-center rounded">
                 <div className="w-20 h-20 bg-[url('/caution.png')] bg-contain bg-center bg-no-repeat"></div>
                 <h1 className='mb-3 font-medium py-7'>{message}!</h1>
                 <button 

@@ -13,6 +13,7 @@ import login from "./pages/login"
 import alreadyLoggedIn from "./pages/alreadyLoggedIn"
 import profile from "./pages/profile"
 import { useUsersStore } from "./stores/useUsersStore"
+import alumniStories from "./pages/alumniStories"
 
 function App() {
   
@@ -31,8 +32,9 @@ function App() {
           <Route path="/" Component={home} />
           <Route path="/about" Component={about} />
           <Route path="/event" Component={event} />
-          <Route path="/event/:id" Component={eventDetail} />
+          <Route path="/event/:id" Component={user.email ? eventDetail : pageNotFound} />
           <Route path="/opportunity" Component={opportunity} />
+          <Route path="/alumnistories" Component={alumniStories} />
           <Route path="/signup" Component={!user.email ? signUp : alreadyLoggedIn} />
           <Route path="/login" Component={!user.email ? login : alreadyLoggedIn} />
           <Route path="/profile" Component={user.email ? profile : pageNotFound} />

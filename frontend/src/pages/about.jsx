@@ -4,6 +4,7 @@ import Pillars from '../components/Pillars'
 import Team from '../components/Team'
 import AlumComm from '../components/AlumComm'
 import FAQ from '../components/FAQ'
+import ScrollSpyAbout from '../components/ScrollSpyAbout'
 
 function about() {
   return (
@@ -13,6 +14,7 @@ function about() {
       <Team />
       <AlumComm />
       <FAQ />
+      <ScrollSpyAbout />
     </>
   )
 }

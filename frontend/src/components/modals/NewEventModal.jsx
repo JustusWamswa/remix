@@ -111,7 +111,7 @@ function NewEventModal({ setShowModal, setChange, change }) {
                     </div>
                     <div className="flex justify-between">
                         <div className='w-full mr-3'>
-                            <label htmlFor="startTime">Start Time</label>
+                            <label htmlFor="startTime">Start Time (GMT)</label>
                             <input
                                 type="time"
                                 name="startTime"
@@ -123,7 +123,7 @@ function NewEventModal({ setShowModal, setChange, change }) {
                             />
                         </div>
                         <div className='w-full ml-3'>
-                            <label htmlFor="endTime">End Time</label>
+                            <label htmlFor="endTime">End Time (GMT)</label>
                             <input
                                 type="time"
                                 name="endTime"

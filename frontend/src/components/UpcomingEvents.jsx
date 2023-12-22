@@ -8,21 +8,21 @@ import { motion } from 'framer-motion'
 
 const fadeInAnimationVariants = {
     initial: { x: '-8vw', opacity: 0 },
-    animate: { x: 0, opacity: 1, transition: { type: 'spring', duration: 3, delay: 0.2 } },
+    animate: { x: 0, opacity: 1, transition: { type: 'spring', duration: 2, delay: 0.2 } },
 }
 const fadeInAnimationVariants1 = {
     initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { type: 'spring', duration: 3, delay: 1 } },
+    animate: { opacity: 1, transition: { type: 'spring', duration: 2, delay: 0.5 } },
 }
 
 const slideInAnimationVariants1 = {
     initial: { x: '8vw', opacity: 0 },
-    animate: { x: 0, opacity: 1, transition: { type: 'spring', duration: 3, delay: 0.2 } },
+    animate: { x: 0, opacity: 1, transition: { type: 'spring', duration: 2, delay: 0.2 } },
 }
 
 const slideInAnimationVariants2 = {
     initial: { x: '8vw', opacity: 0 },
-    animate: { x: 0, opacity: 1, transition: { type: 'spring', duration: 3, delay: 1 } },
+    animate: { x: 0, opacity: 1, transition: { type: 'spring', duration: 2, delay: 0.5 } },
 }
 
 function UpcomingEvents() {
@@ -70,7 +70,7 @@ function UpcomingEvents() {
                             </div>
                             <div className='flex items-center mt-3'>
                                 <div className="bg-[url('/calendar.png')] w-8 h-5 bg-center bg-contain bg-no-repeat mr-8"></div>
-                                <h1 className='text-primary font-bold text-sm'>{item.date}</h1>
+                                <h1 className='text-primary font-bold text-sm'>{item.date} (GMT)</h1>
                             </div>
                             <div className='flex items-center mt-3'>
                                 <div className="bg-[url('/user.jpg')] rounded-full w-8 h-8 bg-center bg-cover bg-no-repeat mr-8"></div>

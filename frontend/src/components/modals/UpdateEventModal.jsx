@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { categories } from '../../cache/categories'
+import { useUsersStore } from '../../stores/useUsersStore'
 
 const apiUrl = import.meta.env.VITE_API_URL
 
 function UpdateEventModal(props) {
 
     const { setShowModal, setChange, change, setUpdatedEventData, updatedEventData } = props
+    const {user} = useUsersStore()
 
 
     const handleSubmit = async (e) => {
@@ -16,6 +18,7 @@ function UpdateEventModal(props) {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`,
                 },
                 body: JSON.stringify(updatedEventData),
             });

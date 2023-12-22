@@ -69,8 +69,8 @@ function Navbar() {
             <li className='border-b pb-2 md:pb-0'><Link to={'/'} className='hover:underline' onClick={()=>setNavbar(!navbar)}>Home</Link></li>
             <li className='border-b pb-2 md:pb-0'><Link to={'/about'} className='hover:underline'>About</Link></li>
             <li className='border-b pb-2 md:pb-0'><Link to={'/event'} className='hover:underline'>Events</Link></li>
-            <li className='border-b pb-2 md:pb-0'><Link to={'/opportunity'} className='hover:underline'>Opportunities</Link></li>
-            <li className='border-b pb-2 md:pb-0'><Link to={'/opportunity'} className='hover:underline'>Alumni Stories</Link></li>
+            {/* <li className='border-b pb-2 md:pb-0'><Link to={'/opportunity'} className='hover:underline'>Opportunities</Link></li> */}
+            <li className='border-b pb-2 md:pb-0'><Link to={'/alumnistories'} className='hover:underline'>Alumni Stories</Link></li>
           </ul>
           {user.email ?
             <UserProfile setNavbar={setNavbar} navbar={navbar} />

@@ -1,8 +1,9 @@
 import React from 'react'
+import Oops from '../components/Oops'
 
 function pageNotFound() {
   return (
-    <div>pageNotFound</div>
+    <Oops />
   )
 }
 
