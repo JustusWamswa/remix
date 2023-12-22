@@ -71,7 +71,7 @@ function Profile() {
     return (
         <div>
             <h1 className='py-3 text-2xl font-medium text-center pt-16 pb-4'>My profile</h1>
-            <div className=' w-full flex items-center justify-evenly px-16 bg-white shadow-lg rounded py-16 divide-x divide-gray-300'>
+            <div className=' w-full md:flex items-center justify-evenly px-16 bg-white shadow-lg rounded py-16 md:divide-x divide-gray-300'>
                 <div className='flex flex-col justify-center items-center'>
                     {
                         userInfo.profilePicture ?
@@ -92,7 +92,7 @@ function Profile() {
                             </div>
                     }
                     <button
-                        className='px-5 py-2 border-2 border-white hover:border-2 hover:border-tertiary rounded bg-secondary outline-none bg-opacity-10 mt-5 text-secondary'
+                        className=' px-2 md:px-5 py-2 border-2 border-white hover:border-2 hover:border-tertiary rounded bg-secondary outline-none bg-opacity-10 mt-5 text-secondary mb-5 md:mb-0'
                         type="button"
                         onClick={() => {
                             setShowProfilePicModal(true)
@@ -103,7 +103,7 @@ function Profile() {
                         Change profile picture
                     </button>
                 </div>
-                <div className='w-1/4'>
+                <div className='md:w-1/4'>
                     <h1 className='font-bold text-sm text-zinc-500 p-4 flex justify-between items-center hover:bg-gray-50'
                         onMouseOver={() => setShowEdit(true)}
                         onMouseLeave={() => setShowEdit(false)}
@@ -235,9 +235,9 @@ function Profile() {
                 </div>
             </div>
             <div className='flex justify-end space-x-5'>
-                <button className='px-5 py-2 border-2 border-tertiary hover:border-2 hover:border-primary rounded bg-secondary outline-none bg-opacity-10 mt-5 text-primary' type="button">Change password</button>
+                <button className='px-2 md:px-5 py-2 border-2 border-tertiary hover:border-2 hover:border-primary rounded bg-secondary outline-none bg-opacity-10 mt-5 text-primary' type="button">Change password</button>
                 {!saving ? <button
-                    className='px-5 py-2 border-2 border-primary hover:border-2 hover:border-secondary rounded bg-primary hover:bg-secondary outline-none mt-5 text-white'
+                    className='px-2 md:px-5 py-2 border-2 border-primary hover:border-2 hover:border-secondary rounded bg-primary hover:bg-secondary outline-none mt-5 text-white'
                     type="button"
                     onClick={() => {
                         setSaving(true)
@@ -249,7 +249,7 @@ function Profile() {
                     Save profile
                 </button>
                 :
-                <button className='px-5 py-2 border-2 border-zinc-400 rounded bg-zinc-400 outline-none mt-5 text-white' type="button">
+                <button className='px-2 md:px-5 py-2 border-2 border-zinc-400 rounded bg-zinc-400 outline-none mt-5 text-white' type="button">
                     Saving...
                 </button>}
             </div>

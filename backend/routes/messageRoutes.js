@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 router.post('/createMessage', messageController.createMessage)
+router.get('/getMessages', messageController.getMessages)
 router.get('/getUnResolvedMessages', messageController.getUnResolvedMessages)
 router.get('/getResolvedMessages', messageController.getResolvedMessages)
 router.get('/getOneMessage/:id', messageController.getOneMessage)

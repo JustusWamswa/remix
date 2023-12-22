@@ -65,7 +65,11 @@ const createUser = async (req, res) => {
 const getUsers = async (req, res) => {
     try {
         const users = await User.find().sort({ updatedAt: -1 })
-        res.status(200).json(users)
+        const newUsers = users.map((user) => ({
+            email: user.email, status: 200, profilePicture: user.profilePicture, graduationYear: user.graduationYear,
+            admin: user.admin, firstName: user.firstName, lastName: user.lastName, id: user._id, phone: user.phone
+        }))
+        res.status(200).json(newUsers)
 
     } catch (error) {
         console.log(error)

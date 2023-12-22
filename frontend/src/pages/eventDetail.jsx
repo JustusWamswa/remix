@@ -93,7 +93,7 @@ function eventDetail() {
                     :
                     <button
                         type="button"
-                        className='w-2/5 text-white bg-primary hover:bg-secondary focus:outline-none px-5 py-2.5 mt-6 text-center rounded'
+                        className='md:w-2/5 text-white bg-primary hover:bg-secondary focus:outline-none px-5 py-2.5 mt-6 text-center rounded'
                         onClick={() => {
                             attendeeData.current = { eventId: eventData._id, userId: user.id }
                             handleReserve()

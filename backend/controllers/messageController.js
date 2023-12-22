@@ -13,6 +13,17 @@ const createMessage = async (req, res) => {
 }
 
 // read messages
+const getMessages = async (req, res) => {
+    try {
+        const messages = await Message.find().sort({ updatedAt: -1 })
+        res.status(200).json(messages)
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json(error)
+
+    }
+}
 const getUnResolvedMessages = async (req, res) => {
     try {
         const messages = await Message.find().filter({ resolved: false }).sort({ updatedAt: -1 })
@@ -53,10 +64,10 @@ const getOneMessage = async (req, res) => {
 
 // update message status
 const updateMessageStatus= async (req, res) => {
-    const { id } = req.body
+    const { _id } = req.body
 
     try {
-        const message = await Message.findByIdAndUpdate(id, req.body, { new: true })
+        const message = await Message.findByIdAndUpdate(_id, req.body, { new: true })
         res.status(200).json(message)
 
     } catch (error) {
@@ -78,4 +89,4 @@ const deleteMessage = async (req, res) => {
     }
 }
 
-module.exports = { createMessage, getUnResolvedMessages, getResolvedMessages, updateMessageStatus, deleteMessage, getOneMessage }
+module.exports = { createMessage, getUnResolvedMessages, getResolvedMessages, updateMessageStatus, deleteMessage, getOneMessage, getMessages }

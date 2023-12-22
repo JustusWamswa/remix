@@ -125,7 +125,7 @@ function signUp() {
 
     return (
         <>
-            <div className='w-1/2 mx-auto pt-12' >
+            <div className='md:w-1/2 mx-auto pt-12' >
                 <h1 className="text-3xl font-bold px-5">Sign Up</h1>
                 <form method="post" className="pt-10 px-5">
                     <div className="grid md:grid-cols-2 md:gap-6">

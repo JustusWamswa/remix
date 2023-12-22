@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useUsersStore } from '../../stores/useUsersStore'
 
 const apiUrl = import.meta.env.VITE_API_URL
 
 function UpdateAdminModal(props) {
 
     const { setShowModal, setChange, change, setUpdatedUserData, updatedUserData } = props
+    const {user} =useUsersStore()
 
     const [response, setResponse] = useState(null);
     const navigate = useNavigate()
@@ -20,6 +22,7 @@ function UpdateAdminModal(props) {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
                 },
                 body: JSON.stringify(updatedUserData),
             });
@@ -50,7 +53,7 @@ function UpdateAdminModal(props) {
             >
 
             </div>
-            <div className="bg-white p-8 z-10 w-1/3">
+            <div className="bg-white p-8 z-10 w-1/3 rounded">
                 <h1 className='mb-3 font-semibold'>Edit admin status</h1>
                 <form onSubmit={handleSubmit} className='flex flex-col'>
                     <div>
@@ -83,13 +86,13 @@ function UpdateAdminModal(props) {
                     <div className="flex justify-end">
                         <button
                             type='submit'
-                            className="mt-4 mr-4 px-4 py-2 bg-slate-900 text-white"
+                            className="mt-4 mr-4 px-4 py-2 bg-slate-900 text-white rounded"
                         >
                             Submit
                         </button>
 
                         <button
-                            className="mt-4 px-4 py-2  text-black border border-primary"
+                            className="mt-4 px-4 py-2  text-black border border-primary rounded"
                             onClick={() => setShowModal(false)}
                         >
                             Cancel

@@ -32,6 +32,12 @@ function UserProfile({ setNavbar, navbar }) {
         return
     }
 
+    const handleDashboard = () => {
+        navigate('/dashboard')
+        setShowModal(false)
+        setUpdateUser(true)
+    }
+
     const handleUpdateProfile = () => {
         navigate('/profile')
         setShowModal(false)
@@ -73,7 +79,7 @@ function UserProfile({ setNavbar, navbar }) {
                     >
 
                     </div>
-                    <div className="bg-white z-10 h-[40%] mr-[10%] mt-20 w-1/6 rounded">
+                    <div className="bg-white z-10 h-[40%] mr-[10%] mt-20 w-1/6 rounded shadow-xl">
                         <div class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded">
                             <div className="px-4 py-3">
                                 <div
@@ -84,12 +90,11 @@ function UserProfile({ setNavbar, navbar }) {
                                 <span className="block text-xs pt-2  text-gray-500 truncate ">{userInfo.email}</span>
                             </div>
                             <ul className="py-2 m-0">
-                                <li>
-                                    <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
-                                </li>
-                                <li>
-                                    <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-                                </li>
+                                {user.admin && <li>
+                                    <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    onClick={handleDashboard}
+                                    >Dashboard</a>
+                                </li>}
                                 <li>
                                     <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                         onClick={handleUpdateProfile}

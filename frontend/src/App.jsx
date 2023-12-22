@@ -14,6 +14,7 @@ import alreadyLoggedIn from "./pages/alreadyLoggedIn"
 import profile from "./pages/profile"
 import { useUsersStore } from "./stores/useUsersStore"
 import alumniStories from "./pages/alumniStories"
+import dashboard from "./pages/dashboard"
 
 function App() {
   
@@ -38,6 +39,7 @@ function App() {
           <Route path="/signup" Component={!user.email ? signUp : alreadyLoggedIn} />
           <Route path="/login" Component={!user.email ? login : alreadyLoggedIn} />
           <Route path="/profile" Component={user.email ? profile : pageNotFound} />
+          <Route path="/dashboard" Component={user.email ? dashboard : pageNotFound} />
           <Route path="*" Component={pageNotFound} />
         </Routes>
       </Layout>

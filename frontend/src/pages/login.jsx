@@ -53,7 +53,7 @@ function login() {
 
     return (
         <>
-            <div className='w-1/2 mx-auto pt-12' >
+            <div className='md:w-1/2 mx-auto pt-12' >
                 <h1 className="text-3xl font-bold px-5">Login</h1>
                 <form method="post" className="pt-10 px-5">
                     {serverErrorResponse ? <p className="text-red-500 text-xs pb-5">{serverErrorResponse}</p> : null}

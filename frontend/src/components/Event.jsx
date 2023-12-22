@@ -44,8 +44,6 @@ function Event() {
     const [search, setSearch] = useState('')
     const [myEvents, setMyEvents] = useState('')
 
-    console.log(myEvents)
-
     // const fetchEvents = async () => {
     //     try {
     //         const response = await fetch(`${apiUrl}/event/getEvents`)
@@ -247,7 +245,7 @@ function Event() {
                                     </div>
                                     <div className='flex justify-between items-center mb-8'>
                                         <h2 className='text-primary text-base font-semibold'>
-                                            {new Date(data.eventDate).getDay()} {new Date(data.eventDate).toLocaleString('en-US', { month: 'long' })} {new Date(data.eventDate).getFullYear()}
+                                            {new Date(data.eventDate).getDate()} {new Date(data.eventDate).toLocaleString('en-US', { month: 'long' })} {new Date(data.eventDate).getFullYear()}
                                             <br />
                                             {data.startTime} - {data.endTime} (GMT)
                                         </h2>
