@@ -1,3 +1,6 @@
+Deployment - https://remix-7bcb.vercel.app/
+
+
 This is an alumni website where alumni can interact and see events related to them. 
 
 
